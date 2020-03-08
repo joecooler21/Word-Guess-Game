@@ -1,4 +1,10 @@
+body {
+    background-image: url('./../images/bg_img.jpg');
+}
+
 .container {
+    margin-top: 50px;
+    background-color: white;
     text-align: center;
 }
 
@@ -13,4 +19,8 @@
 
 .gText {
     font-size: 35px;
+}
+
+.gBlank {
+    letter-spacing: 10px;
 }
