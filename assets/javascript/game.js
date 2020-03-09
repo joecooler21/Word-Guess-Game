@@ -1,22 +1,33 @@
 // initialize game
 
+var gameState = false;
 var movie = pickMovie();
 var oldStr, newStr = "";
 var gameText = document.getElementsByClassName("gText");
 var blankText = hideMovie(movie);
-gameText[0].textContent = blankText;
+
 resetText();
 var guesses = 5;
 var used = "";
 var wins = 0;
 var losses = 0;
 var usedFound = false;
+var x = document.getElementsByClassName ("gBlank");
 
 document.addEventListener("keypress", startGame);
 
 
 
+
 function startGame() {
+
+    if (!gameState)
+    {
+        x[0].style.letterSpacing = "10px";
+        gameText[0].textContent = blankText;
+
+        gameState = true;
+    }
 
 
     document.onkeypress = function (event) {
@@ -97,8 +108,8 @@ function resetText() {
 }
 
 function pickMovie() {
-    var movList = ["the big lebowski", "dazed and confused", "goodfellas", "pulp fiction", "reservoir dogs", "casino", "the usual suspects", "office space", "forrest gump", "the shawshank redemption", "fight club", "seven"]
-    var rNum = Math.floor((Math.random() * 12) + 0);
+    var movList = ["boogie nights", "fargo", "groundhog day", "the big lebowski", "dazed and confused", "goodfellas", "pulp fiction", "reservoir dogs", "casino", "the usual suspects", "office space", "forrest gump", "the shawshank redemption", "fight club", "seven"]
+    var rNum = Math.floor((Math.random() * 15) + 0);
     return movList[rNum];
 }
 
