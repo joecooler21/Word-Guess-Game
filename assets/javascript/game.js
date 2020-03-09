@@ -48,8 +48,18 @@ function startGame() {
 
             }
             if (!found) { // check to see if char guessed is in movie title
+
+                for (let i = 0; i <= used.length - 1; i++) { // check to see if wrong guess characters have been registered
+                    if (used[i] === letter.toUpperCase()) {
+                        usedFound = true;
+                    }
+                }
+                if (!usedFound) {
+                    used += " " + letter.toUpperCase();
+                    gameText[2].textContent = "Characters used:" + used;
+                }
                 
-                if (guesses > 0)
+                if (guesses > 0 && !usedFound)
                     guesses--;
 
                 if (guesses <= 0) { // check to see if user is out of guesses
@@ -62,15 +72,7 @@ function startGame() {
                 usedFound = false;
                 
 
-                for (let i = 0; i <= used.length - 1; i++) { // check to see if wrong guess characters have been registered
-                    if (used[i] === letter.toUpperCase()) {
-                        usedFound = true;
-                    }
-                }
-                if (!usedFound) {
-                    used += " " + letter.toUpperCase();
-                    gameText[2].textContent = "Characters used:" + used;
-                }
+                
             }
 
         }
