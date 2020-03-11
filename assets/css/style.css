@@ -39,27 +39,49 @@ body {
     letter-spacing: 1px;
 }
 
-.pink {
+.pink-bg {
     background-color: rgba(239, 119, 164, 1);
 }
 
-.yellow {
+.pink-text {
+    color: rgba(239, 119, 164, 1);
+}
+
+.yellow-bg {
     background-color: rgba(251, 227, 89, 1);
 }
 
-.blue {
+.blue-bg {
     background-color: rgba(104, 186, 174, 1);
 }
 
-.purple
+.purple-bg
 {
     background-color: rgba(131, 136, 189, 1);
+}
+
+.light-purple-text {
+    color: rgba(131, 136, 189, 1);
+}
+
+.green-text {
     color: rgba(104, 186, 174, 1);
+}
+
+.white-text {
+    color: white;
+}
+
+.red-text {
+    color: rgba(220, 91, 64, 1)
+}
+
+.header {
+    font-size: 50px;
 }
 
 .outline {
     font-family: 'Permanent Marker', cursive;
-        color: white;
         font-size: 40px;
         text-shadow: -1px 1px 0 #000,
                       1px 1px 0 #000,

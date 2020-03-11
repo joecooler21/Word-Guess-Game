@@ -1,5 +1,8 @@
 // initialize game
 
+var movList = ["friday","boogie nights", "fargo", "groundhog day", "the big lebowski", "dazed and confused", "goodfellas", "pulp fiction", "reservoir dogs", "casino", "the usual suspects", "office space", "forrest gump", "the shawshank redemption", "fight club", "seven"];
+var maxMov = movList.length;
+
 var gameState = false;
 var movie = pickMovie();
 var oldStr, newStr = "";
@@ -12,18 +15,18 @@ var used = "";
 var wins = 0;
 var losses = 0;
 var usedFound = false;
-var x = document.getElementsByClassName ("gBlank");
-
-document.addEventListener("keypress", startGame);
+var lastMovie = 0;
 
 
+var mainText = document.getElementsByClassName ("gBlank");
 
+document.addEventListener("keyup", startGame);
 
 function startGame() {
 
     if (!gameState)
     {
-        x[0].style.letterSpacing = "10px";
+        mainText[0].style.letterSpacing = "10px";
         gameText[0].textContent = blankText;
 
         gameState = true;
@@ -92,7 +95,7 @@ function startGame() {
 
 }
 
-function resetGame() {
+function resetGame() { // reset main playing field with new movie, fresh guesses and empty char used field
     movie = pickMovie();
     gameText[0].textContent = hideMovie(movie);
     guesses = 5;
@@ -107,13 +110,22 @@ function resetText() {
     gameText[2].textContent = "Characters used: ";
 }
 
-function pickMovie() {
-    var movList = ["boogie nights", "fargo", "groundhog day", "the big lebowski", "dazed and confused", "goodfellas", "pulp fiction", "reservoir dogs", "casino", "the usual suspects", "office space", "forrest gump", "the shawshank redemption", "fight club", "seven"]
-    var rNum = Math.floor((Math.random() * 15) + 0);
-    return movList[rNum];
+
+
+function pickMovie() { // pick a random movie from the main movie array to put into play, then remove from array so duplicate aren't played and game ends once list has been exhausted
+    if (movList.length > 0) {
+        var mov = "";
+        var rNum = Math.floor((Math.random() * movList.length) + 0);
+        mov = movList[rNum];
+        movList.splice(rNum, 1);
+        return mov;
+    } else
+    mainText[0].textContent = "Game Over!";
+    gameText[1].textContent = "";
+    gameText[2].textContent = "";
 }
 
-function hideMovie(movieName) {
+function hideMovie(movieName) { // return movie title as blank text for main game text field
     var empty = "";
 
     for (var i = 0; i <= movieName.length - 1; i++) {
